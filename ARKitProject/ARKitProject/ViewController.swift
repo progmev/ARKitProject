@@ -33,9 +33,19 @@ class ViewController: UIViewController {
         
         scene.rootNode.addChildNode(boxNode)
         
+        let textGeometry = SCNText(string: "This is the cube", extrusionDepth: 2.0)
+        let textMaterial = SCNMaterial()
+        textMaterial.diffuse.contents = UIColor.red
+        
+        let textNode = SCNNode(geometry: textGeometry)
+        textNode.scale = SCNVector3(0.005, 0.005, 0.005)
+        textNode.geometry?.materials = [textMaterial]
+        
+        textNode.position = SCNVector3(0, 0.2, -1.0)
+        scene.rootNode.addChildNode(textNode)
+        
+        
         sceneView.scene = scene
-        
-        
     }
     
     // Before the advent of VC
