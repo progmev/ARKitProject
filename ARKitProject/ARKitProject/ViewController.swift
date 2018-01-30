@@ -22,6 +22,27 @@ class ViewController: UIViewController {
         
         let scene = SCNScene()
         
+        createFigures(in: scene)
+        
+        // MARK: - AR Sphere
+        /*
+        let sphereGeometry = SCNSphere(radius: 0.1)
+        
+        let sphereMaterial = SCNMaterial()
+        sphereMaterial.diffuse.contents = UIImage(named: "earth.jpg")
+        
+        // change the size of the texture
+        // sphereMaterial.diffuse.contentsTransform = SCNMatrix4MakeScale(2, 2, 2)
+        
+        let sphereNode = SCNNode(geometry: sphereGeometry)
+        sphereNode.geometry?.materials = [sphereMaterial];
+        sphereNode.position = SCNVector3(0, 0, -1)
+        
+        scene.rootNode.addChildNode(sphereNode)
+        */
+        
+        // MARK: - AR Box
+        /*
         let boxGeometry = SCNBox(width: 0.2, height: 0.2, length: 0.2, chamferRadius: 0)
         
         let material = SCNMaterial()
@@ -43,9 +64,38 @@ class ViewController: UIViewController {
         
         textNode.position = SCNVector3(0, 0.2, -1.0)
         scene.rootNode.addChildNode(textNode)
-        
+        */
         
         sceneView.scene = scene
+    }
+    
+    
+    private func createFigures(in scene: SCNScene) {
+        let array: [SCNGeometry] = [SCNPlane(), SCNSphere(), SCNBox(), SCNPyramid(), SCNTube(), SCNCone(), SCNTorus(), SCNCylinder(), SCNCapsule()]
+        var xCoordinate: Double = 1
+        sceneView.autoenablesDefaultLighting = true
+        
+        for geometryShape in array {
+            let node = SCNNode(geometry: geometryShape)
+            
+            let material = SCNMaterial()
+        
+            if (geometryShape is SCNSphere) {
+                material.diffuse.contents = UIImage(named: "earth.jpg")
+            } else if (geometryShape is SCNCapsule) {
+                material.diffuse.contents = UIImage(named: "head.jpg")
+            } else {
+                material.diffuse.contents = UIColor.red
+            }
+
+            node.geometry?.materials = [material]
+            node.scale = SCNVector3(0.3, 0.3, 0.3)
+            
+            node.position = SCNVector3(xCoordinate, 0, -1)
+            xCoordinate -= 0.4
+            
+            scene.rootNode.addChildNode(node)
+        }
     }
     
     // Before the advent of VC

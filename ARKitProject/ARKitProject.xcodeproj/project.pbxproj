@@ -13,6 +13,8 @@
 		D78F7ED52018C92B003751EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78F7ED32018C92B003751EF /* Main.storyboard */; };
 		D78F7ED72018C92B003751EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D78F7ED62018C92B003751EF /* Assets.xcassets */; };
 		D78F7EDA2018C92B003751EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78F7ED82018C92B003751EF /* LaunchScreen.storyboard */; };
+		D7BB5D3C202083EF00DE4AB6 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BB5D3B202083EF00DE4AB6 /* head.jpg */; };
+		D7BB5D3E2020855D00DE4AB6 /* earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BB5D3D2020855D00DE4AB6 /* earth.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D78F7ED62018C92B003751EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D78F7ED92018C92B003751EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D78F7EDB2018C92B003751EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7BB5D3B202083EF00DE4AB6 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
+		D7BB5D3D2020855D00DE4AB6 /* earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		D78F7ECC2018C92B003751EF /* ARKitProject */ = {
 			isa = PBXGroup;
 			children = (
+				D7BB5D3D2020855D00DE4AB6 /* earth.jpg */,
+				D7BB5D3B202083EF00DE4AB6 /* head.jpg */,
 				D78F7ECD2018C92B003751EF /* AppDelegate.swift */,
 				D78F7ECF2018C92B003751EF /* art.scnassets */,
 				D78F7ED12018C92B003751EF /* ViewController.swift */,
@@ -127,6 +133,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D78F7ED02018C92B003751EF /* art.scnassets in Resources */,
+				D7BB5D3C202083EF00DE4AB6 /* head.jpg in Resources */,
+				D7BB5D3E2020855D00DE4AB6 /* earth.jpg in Resources */,
 				D78F7EDA2018C92B003751EF /* LaunchScreen.storyboard in Resources */,
 				D78F7ED72018C92B003751EF /* Assets.xcassets in Resources */,
 				D78F7ED52018C92B003751EF /* Main.storyboard in Resources */,
