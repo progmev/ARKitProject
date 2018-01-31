@@ -19,10 +19,15 @@ class ViewController: UIViewController {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        sceneView.autoenablesDefaultLighting = true
         
         let scene = SCNScene()
+        createBox(in: scene)
         
-        createFigures(in: scene)
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(boxTapped(touch:)))
+        self.sceneView.addGestureRecognizer(gestureRecognizer)
+        
+        //createFigures(in: scene)
         
         // MARK: - AR Sphere
         /*
@@ -69,6 +74,35 @@ class ViewController: UIViewController {
         sceneView.scene = scene
     }
     
+    @objc func boxTapped(touch: UITapGestureRecognizer) {
+        let sceneView = touch.view as! SCNView  // touch SCNView
+        let touchLocation = touch.location(in: sceneView) // coordinats
+        
+        let touchResults = sceneView.hitTest(touchLocation, options: [:])
+        
+        // touchResults is not Empty & we can eject node
+        guard !touchResults.isEmpty, let node = touchResults.first?.node else { return }
+        
+        // change property touch object
+        let boxMaterial = SCNMaterial()
+        boxMaterial.diffuse.contents = UIColor.blue
+        boxMaterial.specular.contents = UIColor.red
+        node.geometry?.materials[0] = boxMaterial
+        
+    }
+    
+    private func createBox(in scene: SCNScene) {
+        let box = SCNBox(width: 0.2, height: 0.2, length: 0.2, chamferRadius: 0)
+        let boxMaterial = SCNMaterial()
+        
+        boxMaterial.diffuse.contents = UIColor.red      // color box
+        boxMaterial.specular.contents = UIColor.yellow  // reflected light
+        
+        let boxNode = SCNNode(geometry: box)
+        boxNode.geometry?.materials = [boxMaterial]
+        boxNode.position = SCNVector3(0.0, 0.0, -1.0)
+        scene.rootNode.addChildNode(boxNode)
+    }
     
     private func createFigures(in scene: SCNScene) {
         let array: [SCNGeometry] = [SCNPlane(), SCNSphere(), SCNBox(), SCNPyramid(), SCNTube(), SCNCone(), SCNTorus(), SCNCylinder(), SCNCapsule()]
